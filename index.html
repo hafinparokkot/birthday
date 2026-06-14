@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A special birthday surprise crafted with love for Sree — 4 beautiful years and counting. Happy Birthday!" />
+  <title>Happy Birthday, Sree 🌹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-heart">
+        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 85 L10 45 C-5 30 -5 10 10 5 C25 0 35 10 50 25 C65 10 75 0 90 5 C105 10 105 30 90 45 Z" />
+        </svg>
+      </div>
+      <p class="preloader-text">preparing something special...</p>
+    </div>
+  </div>
+
+  <!-- FLOATING HEARTS (Global) -->
+  <div id="hearts-container" aria-hidden="true"></div>
+
+  <!-- ROSE PETALS (Global) -->
+  <div id="petals-container" aria-hidden="true"></div>
+
+  <!-- SECTION 1: HERO -->
+  <section id="hero" class="section-hero">
+    <canvas id="starfield" aria-hidden="true"></canvas>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">✦ Hi..Shandi... Kundii.. ✦</div>
+      <h1 class="hero-title">
+        <span class="hero-title-small">Happy Birthday</span>
+        <span class="hero-title-name">Sree</span>
+      </h1>
+      <p class="hero-subtitle">Four beautiful years. A million beautiful moments. And forever still to go. 💫</p>
+      <button class="hero-cta" id="hero-cta-btn" onclick="scrollToSection('galaxy')">
+        <span>Begin Our Journey</span>
+        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16m-7-7 7 7 7-7"/></svg>
+      </button>
+    </div>
+
+    <div class="hero-photo-frame">
+      <div class="hero-photo-ring ring-1"></div>
+      <div class="hero-photo-ring ring-2"></div>
+      <div class="hero-photo-ring ring-3"></div>
+      <img src="photos/photo1.jpg" alt="Sree" class="hero-photo" id="hero-photo" />
+      <div class="hero-photo-sparkles" aria-hidden="true">
+        <span class="sparkle s1">✦</span>
+        <span class="sparkle s2">✧</span>
+        <span class="sparkle s3">✦</span>
+        <span class="sparkle s4">✧</span>
+        <span class="sparkle s5">✦</span>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: GALAXY OF STARS -->
+  <section id="galaxy" class="section-galaxy">
+    <div class="section-header">
+      <div class="section-badge">✦ The Universe of You ✦</div>
+      <h2 class="section-title">A Galaxy Made of <em>You</em></h2>
+      <p class="section-sub">Every star holds a secret. Tap each one to discover it. 🌟</p>
+    </div>
+    <div class="galaxy-universe" id="galaxy-universe" aria-label="Interactive star map"></div>
+    <div class="star-message-popup" id="star-popup" role="dialog" aria-modal="true">
+      <button class="star-popup-close" id="star-popup-close" aria-label="Close">✕</button>
+      <div class="star-popup-icon">⭐</div>
+      <p class="star-popup-text" id="star-popup-text"></p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PHOTO GARDEN -->
+  <section id="garden" class="section-garden">
+    <div class="section-header">
+      <div class="section-badge">✦ Our Garden of Memories ✦</div>
+      <h2 class="section-title">Moments That Bloom <em>Forever</em></h2>
+      <p class="section-sub">Every photo tells a story of us. 📸</p>
+    </div>
+
+    <div class="garden-grid" id="garden-grid">
+      <div class="garden-card garden-card--tall" data-index="0">
+        <div class="garden-card-inner">
+          <img src="photos/photo1.jpg" alt="Sree in nature" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">Where the forest meets magic ✨</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">🌸</div>
+      </div>
+      <div class="garden-card" data-index="1">
+        <div class="garden-card-inner">
+          <img src="photos/photo2.jpg" alt="Sree portrait" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">Effortlessly beautiful 🌹</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">🌷</div>
+      </div>
+      <div class="garden-card" data-index="2">
+        <div class="garden-card-inner">
+          <img src="photos/photo3.jpg" alt="Us together" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">Rain or shine, together 🌂</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">💕</div>
+      </div>
+      <div class="garden-card" data-index="3">
+        <div class="garden-card-inner">
+          <img src="photos/photo4.jpg" alt="Sree in yellow" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">You make every frame beautiful 🌻</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">🌼</div>
+      </div>
+      <div class="garden-card garden-card--wide" data-index="4">
+        <div class="garden-card-inner">
+          <img src="photos/photo5.jpg" alt="Us in the rain" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">My favourite adventure partner 💞</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">🌺</div>
+      </div>
+      <div class="garden-card" data-index="5">
+        <div class="garden-card-inner">
+          <img src="photos/photo6.jpg" alt="Sree glowing" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">You light up every room 🌟</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">🌸</div>
+      </div>
+      <div class="garden-card garden-card--tall" data-index="6">
+        <div class="garden-card-inner">
+          <img src="photos/photo7.jpeg" alt="Sree smiling" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">That smile that melts everything 💛</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">🌻</div>
+      </div>
+      <div class="garden-card" data-index="7">
+        <div class="garden-card-inner">
+          <img src="photos/photo8.jpg" alt="A beautiful moment" class="garden-img" loading="lazy" />
+          <div class="garden-card-overlay">
+            <p class="garden-card-caption">Every moment with you is perfect 🌹</p>
+          </div>
+        </div>
+        <div class="garden-card-petals" aria-hidden="true">💐</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LOVE JOURNEY -->
+  <section id="journey" class="section-journey">
+    <div class="section-header">
+      <div class="section-badge">✦ Our Story ✦</div>
+      <h2 class="section-title">Four Years of <em>Forever</em></h2>
+      <p class="section-sub">Every chapter better than the last. 📖</p>
+    </div>
+    <div class="timeline" role="list">
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot"><span class="timeline-dot-icon">💫</span></div>
+        <div class="timeline-content">
+          <div class="timeline-year">Year One</div>
+          <h3 class="timeline-title">Where it all began</h3>
+          <p class="timeline-text">That first hello that changed everything. I dont remember when was it all started but am glad it started, thanks to nammde stone bench... athillarnuvengiloo..llee.</p>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item--right" role="listitem">
+        <div class="timeline-dot"><span class="timeline-dot-icon">🌸</span></div>
+        <div class="timeline-content">
+          <div class="timeline-year">Year Two</div>
+          <h3 class="timeline-title">Growing together</h3>
+          <p class="timeline-text">Adventures explored, memories carved, inside jokes that only we understand. Nammal made a lot of core memmories that we didint knew it was the best of our friendship . .</p>
+        </div>
+      </div>
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot"><span class="timeline-dot-icon">🌹</span></div>
+        <div class="timeline-content">
+          <div class="timeline-year">Year Three</div>
+          <h3 class="timeline-title">Deeper, stronger</h3>
+          <p class="timeline-text">Through every challenge, every ordinary Tuesday  being with you never once felt ordinary. It always felt like home. You are my home shandii. If you werent there njaan epalee mental aayene...theenks for being there for me.</p>
+        </div>
+      </div>
+      <div class="timeline-item timeline-item--right" role="listitem">
+        <div class="timeline-dot"><span class="timeline-dot-icon">✨</span></div>
+        <div class="timeline-content">
+          <div class="timeline-year">Year Four & Beyond</div>
+          <h3 class="timeline-title">Forever isn't enough</h3>
+          <p class="timeline-text">Here we are. Four years in, missing you so badly... pettenn ticket edth baaa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: LOVE LETTER -->
+  <section id="letter" class="section-letter">
+    <div class="section-header">
+      <div class="section-badge">✦ Something Special ✦</div>
+      <h2 class="section-title">A Letter <em>For You</em></h2>
+      <p class="section-sub">There's something hidden inside... can you open it? 💌</p>
+    </div>
+
+    <div class="letter-container">
+
+      <!-- SHRINKING BUTTON STAGE -->
+      <div class="letter-btn-stage" id="letter-btn-stage">
+        <div class="letter-btn-glow" id="letter-btn-glow" aria-hidden="true"></div>
+        <button class="letter-open-btn" id="letter-open-btn" onclick="handleLetterClick()" aria-label="Open the love letter">
+          <div class="letter-btn-inner">
+            <div class="letter-btn-icon">💌</div>
+            <span class="letter-btn-text">Open My Letter</span>
+            <span class="letter-btn-hint">Tap me...</span>
+          </div>
+        </button>
+        <p class="letter-btn-progress" id="letter-btn-progress" aria-live="polite"></p>
+      </div>
+
+      <!-- LETTER PAPER (hidden until fully opened) -->
+      <div class="letter-paper" id="letter-paper">
+        <div class="letter-header-deco" aria-hidden="true">
+          <span>✦</span><span>Happy Birthday, My Shandi</span><span>✦</span>
+        </div>
+        <div class="letter-body">
+          <p class="letter-salutation">My dearest Sree,</p>
+          <p class="letter-para">Today, the universe pauses just for you. Because someone as extraordinary as you deserves more than just a day  you deserve the stars, the moon, and every heartbeat in between.</p>
+          <p class="letter-para">Four years ago, something shifted in my world  quietly, beautifully, permanently. You walked in and made everything brighter, warmer, and more alive. And every single day since then has been a gift.</p>
+          <p class="letter-para">You are the reason I believe in magic. In the magic of an ordinary morning, of a shared laugh, of the way you smile, of the way you sleep while am talking which makes me so glad knowing how much comfortable you got with me the same way i got so comfortable with you.</p>
+          <p class="letter-para">On this birthday, I want you to know: you are loved beyond words, cherished beyond measure, and adored in ways that no letter could ever fully capture. Thank you for being there for me through my thick and thin..listening to my shanditharams...being with me... the support you have given me with and without your knowledge..all am soo grateful.. I wish you all the best ...If this world ever gets hard for you come running to me..I will be always there being on your side </p>
+          <p class="letter-closing">Forever yours, always,<br/><em class="letter-signature">Your Kundzz 💕</em></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 6: CUT THE CAKE -->
+  <section id="cakecut" class="section-cakecut">
+    <div class="section-header">
+      <div class="section-badge">✦ A Special Surprise ✦</div>
+      <h2 class="section-title">Cut the <em>Cake</em> 🎂</h2>
+      <p class="section-sub" id="cake-subtext">Go ahead Sree, it's all yours — cut it! 🔪</p>
+    </div>
+
+    <div class="cake-scene" id="cake-scene">
+
+      <!-- KNIFE -->
+      <div class="cake-knife-wrap" id="cake-knife-wrap" aria-hidden="true">
+        <svg class="cake-knife-svg" id="cake-knife-svg" viewBox="0 0 60 260" xmlns="http://www.w3.org/2000/svg">
+          <!-- Handle -->
+          <rect x="20" y="0" width="20" height="80" rx="10" fill="#8B4513"/>
+          <rect x="22" y="5" width="16" height="70" rx="8" fill="#A0522D"/>
+          <!-- Guard -->
+          <rect x="10" y="78" width="40" height="10" rx="4" fill="#C0C0C0"/>
+          <!-- Blade -->
+          <polygon points="25,88 35,88 38,260 22,260" fill="url(#bladeGrad)"/>
+          <polygon points="35,88 38,88 38,260" fill="rgba(255,255,255,0.3)"/>
+          <defs>
+            <linearGradient id="bladeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#d0d0d0"/>
+              <stop offset="50%" stop-color="#f8f8f8"/>
+              <stop offset="100%" stop-color="#b0b0b0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- CAKE (two halves that split apart) -->
+      <div class="cake-container" id="cake-container">
+
+        <!-- LEFT HALF -->
+        <div class="cake-half cake-half--left" id="cake-left">
+          <div class="cake-half-inner cake-half-inner--left">
+            <!-- Top tier left -->
+            <div class="cake-tier cake-tier--top-left">
+              <div class="cake-tier-face"></div>
+              <div class="cake-tier-top"></div>
+              <div class="cake-candles-row">
+                <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+              </div>
+            </div>
+            <!-- Bottom tier left -->
+            <div class="cake-tier cake-tier--bottom-left">
+              <div class="cake-tier-face"></div>
+              <div class="cake-tier-top"></div>
+            </div>
+            <!-- Plate left -->
+            <div class="cake-plate cake-plate--left"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT HALF -->
+        <div class="cake-half cake-half--right" id="cake-right">
+          <div class="cake-half-inner cake-half-inner--right">
+            <!-- Top tier right -->
+            <div class="cake-tier cake-tier--top-right">
+              <div class="cake-tier-face"></div>
+              <div class="cake-tier-top"></div>
+              <div class="cake-candles-row">
+                <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+              </div>
+            </div>
+            <!-- Bottom tier right -->
+            <div class="cake-tier cake-tier--bottom-right">
+              <div class="cake-tier-face"></div>
+              <div class="cake-tier-top"></div>
+            </div>
+            <!-- Plate right -->
+            <div class="cake-plate cake-plate--right"></div>
+          </div>
+        </div>
+
+        <!-- CUT LINE (visible during cutting) -->
+        <div class="cake-cut-line" id="cake-cut-line" aria-hidden="true"></div>
+
+        <!-- SPARKS during cut -->
+        <div class="cake-sparks" id="cake-sparks" aria-hidden="true"></div>
+      </div>
+
+      <!-- CUT BUTTON -->
+      <div class="cake-btn-wrap" id="cake-btn-wrap">
+        <button class="cake-cut-btn" id="cake-cut-btn" onclick="startCakeCut()">
+          <span class="cake-btn-icon">🔪</span>
+          <span class="cake-btn-text">Cut the Cake!</span>
+        </button>
+        <p class="cake-btn-hint">Tap to make a wish come true ✨</p>
+      </div>
+
+      <!-- VIDEO REVEAL (pops out from inside cake) -->
+      <div class="cake-video-reveal" id="cake-video-reveal">
+        <div class="cake-video-glow" aria-hidden="true"></div>
+        <div class="cake-video-frame">
+          <div class="cake-video-header">
+            <span class="cake-video-hearts" aria-hidden="true">💕 💕 💕</span>
+            <p class="cake-video-title">A Message From The Heart 💌</p>
+            <span class="cake-video-hearts" aria-hidden="true">💕 💕 💕</span>
+          </div>
+          <div class="cake-video-wrapper">
+            <video id="birthday-video" class="birthday-video" playsinline controls>
+              <source src="birthday_video.mp4" type="video/mp4" />
+              <p>Your browser doesn't support video. <a href="birthday_video.mp4">Download it here</a>.</p>
+            </video>
+            <div class="video-placeholder" id="video-placeholder">
+              <div class="placeholder-icon">🎬</div>
+              <p>Place your video file named<br/><strong>birthday_video.mp4</strong><br/>in the birthday folder</p>
+            </div>
+          </div>
+          <p class="cake-video-caption">Happy Birthday, my love 🌹</p>
+        </div>
+        <div class="cake-video-petals" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 7: GRAND FINALE -->
+  <section id="finale" class="section-finale">
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+    <div class="finale-content">
+      <div class="finale-rings" aria-hidden="true">
+        <div class="finale-ring r1"></div>
+        <div class="finale-ring r2"></div>
+        <div class="finale-ring r3"></div>
+      </div>
+      <h2 class="finale-title">
+        <span class="finale-line-1">Happy</span>
+        <span class="finale-line-2">Birthday</span>
+        <span class="finale-line-3">Sree 🎂</span>
+      </h2>
+      <p class="finale-message">May this year bring you all the joy, love, and magic you so beautifully deserve. 🌹</p>
+      <div class="finale-icons" aria-hidden="true">
+        <span>🎂</span><span>✨</span><span>💕</span><span>🌹</span><span>🎉</span>
+      </div>
+      <button class="finale-btn" id="confetti-btn" onclick="launchConfetti()">
+        🎆 Celebrate!
+      </button>
+    </div>
+  </section>
+
+  <!-- MUSIC PLAYER -->
+  <div class="music-player" id="music-player" role="complementary" aria-label="Background music">
+    <button class="music-btn" id="music-toggle" aria-label="Toggle music" onclick="toggleMusic()">
+      <svg class="music-icon" id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+      <svg class="music-icon hidden" id="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="10" y1="15" x2="10" y2="9"/><line x1="14" y1="15" x2="14" y2="9"/></svg>
+      <div class="music-bars" id="music-bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+    <div class="music-info">
+      <span class="music-note">♪</span>
+      <span class="music-label">A Song For You</span>
+    </div>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
